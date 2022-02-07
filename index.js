@@ -8,7 +8,7 @@ import mwclient
 site =mwclient.Site('lol.fandom.com', path='/')
 
 
-response = site.api('')
+
 
 
 client.on("message", function(message) {
