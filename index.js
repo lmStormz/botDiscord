@@ -4,8 +4,8 @@ const { Client, Intents } = require('discord.js');
 const client = new Discord.Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const prefix="!";
 
-import mwclient
-site =mwclient.Site('lol.fandom.com', path='/')
+//import mwclient
+//site =mwclient.Site('lol.fandom.com', path='/')
 
 
 
