@@ -39,7 +39,7 @@ client.on("message", function(message) {
   }
 
   else if (command === "date") {
-     var nbr = d.getDay();
+     var nbr = d.getDay()-1;
     message.reply(`On est ${jour[nbr]}!`);
   }
 
