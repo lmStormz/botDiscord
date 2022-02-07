@@ -8,7 +8,7 @@ const prefix="!";
 //site =mwclient.Site('lol.fandom.com', path='/')
 
 
-
+let d = new Date();
 
 
 client.on("message", function(message) {
@@ -30,7 +30,7 @@ client.on("message", function(message) {
   }
 
   else if (command === "date") {
-    const jour = Date.getDay();
+    const jour = d.getDay();
     message.reply(`On est ${jour}!`);
   }
 
