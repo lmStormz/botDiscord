@@ -4,6 +4,12 @@ const { Client, Intents } = require('discord.js');
 const client = new Discord.Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const prefix="!";
 
+import mwclient
+site =mwclient.Site('lol.fandom.com', path='/')
+
+
+response = site.api('')
+
 
 client.on("message", function(message) {
   if (message.author.bot) return;
@@ -21,6 +27,11 @@ client.on("message", function(message) {
     const numArgs = args.map(x => parseFloat(x));
     const sum = numArgs.reduce((counter, x) => counter += x);
     message.reply(`The sum of all the arguments you provided is ${sum}!`);
+  }
+
+  else if (command === "date") {
+    const jour = Date.getDay();
+    message.reply(`On est ${jour}!`);
   }
 
 
