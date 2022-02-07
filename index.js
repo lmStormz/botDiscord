@@ -9,7 +9,7 @@ const prefix="!";
 
 
 var d = new Date();
-const jour=[];
+var jour=[];
 jour[0]="Lundi";
 jour[1]="Mardi";
 jour[2]="Mercredi";
