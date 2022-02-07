@@ -8,7 +8,7 @@ const prefix="!";
 //site =mwclient.Site('lol.fandom.com', path='/')
 
 
-let d = new Date();
+var d = new Date();
 
 
 client.on("message", function(message) {
