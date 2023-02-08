@@ -1,0 +1,38 @@
+const { Client, GatewayIntentBits } = require('discord.js');
+const { token } = require('./config.json');
+
+// Create a new client instance
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+
+// When the client is ready, run this code (only once)
+ client.once('ready', () => {
+	console.log('Ready!');
+});
+
+// Login to Discord with your client's token
+client.login(token);
+
+
+
+const today = new Date();
+
+const formattedDate = today.toLocaleDateString("fr-FR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric"
+ });
+
+
+client.on("message", message => {
+ if (message.content === "!date") {
+   message.channel.send('la date du jour est ${formattedDate}')
+ }
+});
+
+client.on("message", message => {
+  if (message.content === "!ping") {
+      message.channel.send("Pong.")
+    }
+})
+
+

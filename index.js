@@ -1,26 +1,31 @@
 const Discord = require("discord.js");
-const config = require("./config.json");
-const { Client, Intents } = require('discord.js');
-const client = new Discord.Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+const { Client, GatewayIntentBits } = require('discord.js');
+const { token } = require('./config.json');
+
+//Create a new client instance
+const client = new Client({ intents: [
+	GatewayIntentBits.Guilds,
+	GatewayIntentBits.GuildMessages,
+	GatewayIntentBits.MessageContent,
+   ]
+ });
+
 const prefix="!";
 
 //var leaguepedia=require('mwclient');
-//leaguepedia =mwclient.Site('lol.fandom.com', path='/')
-
+////leaguepedia =mwclient.Site('lol.fandom.com', path='/')
 
 var d = new Date();
 var jour=[];
-jour[0]="Lundi";
-jour[1]="Mardi";
-jour[2]="Mercredi";
-jour[3]="Jeudi";
-jour[4]="Vendredi";
-jour[5]="Samedi";
-jour[6]="Dimanche";
+jour[0]="Dimanche"
+jour[1]="Lundi";
+jour[2]="Mardi";
+jour[3]="Mercredi";
+jour[4]="Jeudi";
+jour[5]="Vendredi";
+jour[6]="Samedi";
 
-
-
-client.on("message", function(message) {
+client.on("messageCreate", function(message) {
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
 
@@ -32,19 +37,30 @@ client.on("message", function(message) {
     const timeTaken = Date.now() - message.createdTimestamp;
     message.reply(`Pong! This message had a latency of ${timeTaken}ms.`);
   }
-  else if (command === "sum") {
+   else if (command === "sum") {
     const numArgs = args.map(x => parseFloat(x));
     const sum = numArgs.reduce((counter, x) => counter += x);
     message.reply(`The sum of all the arguments you provided is ${sum}!`);
   }
+   //else if (command === "date") {
+    // var nbr = d.getDay()-1;
+     //message.reply(`On est ${jour[nbr]}!`);
+   //}
+//   else if (command=="date") {
+//   const today = new Date();
+//    const formattedDate = today.toLocaleDateString("fr-FR", {
+//     day: "numeric",
+//     month: "long",
+//     year: "numeric",
+//     })
+//    message.reply('aujourd hui nous sommes' + formattedDate);
+//   };
 
-  else if (command === "date") {
-     var nbr = d.getDay()-1;
-    message.reply(`On est ${jour[nbr]}!`);
-  }
-
-
+   else if (command === "date") {
+   message.reply(jour[d.getDay()]);
+   }
 
 });
 
-client.login(config.BOT_TOKEN);
+console.log("Ready");
+client.login(token);
