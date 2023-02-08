@@ -16,16 +16,7 @@ const prefix="!";
 ////leaguepedia =mwclient.Site('lol.fandom.com', path='/')
 
 var d = new Date();
-var days=[];
-jour[0]="Dimanche"
-jour[1]="Lundi";
-jour[2]="Mardi";
-jour[3]="Mercredi";
-jour[4]="Jeudi";
-jour[5]="Vendredi";
-jour[6]="Samedi";
-
-var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var days = ['Dimanche','Lundi','Mardi','Wednesday','Thursday','Friday','Saturday'];
 
 
 
