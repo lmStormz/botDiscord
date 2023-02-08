@@ -37,7 +37,6 @@ client.on("messageCreate", function(message) {
     message.reply(`The sum of all the arguments you provided is ${sum}!`);
   }
 
-
    else if (command === "date") {
    var day = days[ d.getDay() ];
       message.reply(day);
