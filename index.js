@@ -16,8 +16,7 @@ const prefix="!";
 ////leaguepedia =mwclient.Site('lol.fandom.com', path='/')
 
 var d = new Date();
-var days = ['Dimanche','Lundi','Mardi','Wednesday','Thursday','Friday','Saturday'];
-
+var days = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
 
 
 client.on("messageCreate", function(message) {
@@ -37,23 +36,7 @@ client.on("messageCreate", function(message) {
     const sum = numArgs.reduce((counter, x) => counter += x);
     message.reply(`The sum of all the arguments you provided is ${sum}!`);
   }
-   //else if (command === "date") {
-    // var nbr = d.getDay()-1;
-     //message.reply(`On est ${jour[nbr]}!`);
-   //}
-//   else if (command=="date") {
-//   const today = new Date();
-//    const formattedDate = today.toLocaleDateString("fr-FR", {
-//     day: "numeric",
-//     month: "long",
-//     year: "numeric",
-//     })
-//    message.reply('aujourd hui nous sommes' + formattedDate);
-//   };
 
-//   else if (command === "date") {
-//   message.reply(jour[d.getDay()]);
-//   }
 
    else if (command === "date") {
    var day = days[ d.getDay() ];
