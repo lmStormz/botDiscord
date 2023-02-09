@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const { Client, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
-const API_KEY = require ("api_key.json");
+const API_KEY = require('./api_key.json');
 const prefix="!"; // Prefix cmd bot Discord
 
  // Variable pour API RIOT
