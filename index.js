@@ -1,6 +1,13 @@
 const Discord = require("discord.js");
 const { Client, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
+const API_KEY = require ("api_key.json");
+const prefix="!"; // Prefix cmd bot Discord
+
+ // Variable pour API RIOT
+const request = require("request");
+const SUMMONER_NAME = "";
+const REGION = "euw1";
 
 //Create a new client instance
 const client = new Client({ intents: [
@@ -10,14 +17,19 @@ const client = new Client({ intents: [
    ]
  });
 
-const prefix="!";
-
 //var leaguepedia=require('mwclient');
 ////leaguepedia =mwclient.Site('lol.fandom.com', path='/')
 
 var d = new Date();
 var days = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
 
+const options = {
+//  url: `https://${REGION}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${SUMMONER_NAME}`,
+	url: `https://${REGION}.api.riotgames.com/lol/summoner/v4/summoners/by-name/TheBigShneyk`,
+  headers: {
+    "X-Riot-Token": API_KEY
+  }
+};
 
 client.on("messageCreate", function(message) {
   if (message.author.bot) return;
@@ -38,10 +50,19 @@ client.on("messageCreate", function(message) {
   }
 
    else if (command === "date") {
-   var day = days[ d.getDay() ];
+   var day = days[d.getDay()];
       message.reply(day);
-      }
+  }
 
+	else if (command === "partie") {
+	message.reply(options);
+ }
+
+			request(options, function(error, response, body) {
+			  if (!error && response.statusCode === 200) {
+			    console.log(JSON.parse(body));
+			  }
+			});
 });
 
 console.log("Ready");
